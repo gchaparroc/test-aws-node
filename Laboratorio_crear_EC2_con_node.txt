@@ -24,4 +24,58 @@ NOTA: Un flujo normal en un ambiente de produccion real es crear codigo en ambie
 6.- y subimos nuestro proyecto local, para eso creamos un nuevo redepositorio y lo colocamos como publico
 7.- git init                                         (para iniciar git)
 	7.1.- git status                             (se veran todos los archivos en rojo porque aun no se ha hecho un git add .)  
-     	7.2.- git add .                              (para subir a staging los archivos)
+     	7.2.- git add .                              (para subir a staying los archivos)
+	7.3.- git status                             (ahora deberiamos verlos en verde porque ya estarian en staying)
+	7.4.- git commit -m "primer commit"          (para hacer efectivo el commit con su descripcion)
+	7.5.- git config --global user.email "gchaparroc.certificaciones@gmail.com"
+	7.6.- git config --global user.name "gchaparroc"
+        7.7.- source ~/.bashrc                       (le decimos a leer el servidor que vuelva a leer las configuraciones)
+	7.7.- git commit -m "primer commit"          (ahora ya nos deberia funcionar nuestro primer commit)
+	7.8.- git log                                (ver el log de mis commits)
+	7.9.- git remote add origin https://github.com/gchaparroc/test-aws-node.git   (lo copiamos del redepositorio para subirlo a git)
+	7.10.- git remote -v                         (para ver a donde vamos a subir el codigo)
+	7.11.- git branch -M main                    (creamos la rama main)
+	7.12.- git push -u origin main               (vamos a hacer el push a la rama main que acabamos de crear)
+	7.13.- en este punto deberia pedir credenciales de git "Sign in with your browser"
+	7.14.- a esta altura si revisamos nuestro redepositorio de git, ya deberia estar subido nuestro codigo
+	7.15.- vamos a donde dice "Code" y copiamos la url donde dice "Https" https://github.com/gchaparroc/test-aws-node.git
+8.- vamos a nuestro servidor de AWS y creamos un directorio para alojar nuestro proyecto
+	8.1.- mkdir proyecto
+	8.2.- cd proyecto
+	8.3.- git clone https://github.com/gchaparroc/test-aws-node.git
+	8.4.- ls                                      (deberia ver ya mi proyecto)
+	8.5.- cd test-aws-node                        (entramos en nuestro proyecto)
+	8.6.- ls                                      (ya deberiamos ver nuestros archivos del proyecto)
+	8.7.- ls -a                                   (vemos hasta los archivos ocultosg)
+	8.8.- cat server.js                           (ver el contenido del archivo server.js)
+	8.9.- node --version                          (vemos que no tenemos instalado node en el servidor de AWS)
+	8.10.- curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash    (para instalar nvm)
+	8.11.- nvm --version
+	8.12.- vemos que nvm no aparece a pesar de que se encuentra instalado, esto se debe a que tenemos que reiniciar el servidor
+	8.13.- source ~/.bashrc                        (le decimos al servidor que vuelva a leer las configuraciones que tenemos un programa nuevo)
+	8.14.- nvm --version                           (ya deberia aparecer la version)
+	8.15.- nvm install --lts                       (instalara la version lts de node, si ponenos solo "nvm install node" descargara la version actual
+                                                        inestable que no es recomendable para ambientes de produccion, la ventaja de nvm es que podemos 
+                                                        descargar la version de node que queramos especificamente)
+	8.16.- node --version                          (ya deberiamos ver la version que tenemos instalada de node)
+	8.17.- npm --version
+	8.18.- npx --version
+	8.19.- npm install                             (instalamos las dependencias de node)
+	8.20.- ls                                      (ahora deberiamos ver que aparece la carpeta "node_modules")
+	8.21.- npm start                               (vemos que ya se esta ejecutando en el servidor de AWS)
+	8.22.- http://ec2-54-83-71-85.compute-1.amazonaws.com:3000/       (Ejecutamos en el navegador la url publica del servidor con el puerto y ya veriamos la ejecucion)
+9.- Ahora que ya tenemos la aplicacion ejecutandose en nuestro servidor, si queremos mantener la ejecucion asi nos salgamos del servidor de la consola, tenemos que
+    ejecutar el siguiente comando:
+	9.1.- npm start &
+	9.2.- ps -a                                    (para ver los procesos que se estan ejecutando en mi servidor)
+	9.3.- killall node                             (matar todos los procesos que tengan que ver con node pero se traba la consola)
+	9.4.- npm start &                              (ejecutamos nuevamente la aplicacion manteniendola)
+	9.5.- ps -ef                                   (otra forma de ver los procesos que se ejecutan en mi servidor de forma mas detallada)
+	9.6.- kill 3378                                (la mejor forma de matar los procesos es por el id del proceso de a 1)
+10.- Si hacemos un cambio en nuestro ambiente local
+	10.1.- git status
+    	10.2.- si vamos a VSC y pinchamos en el archivo "server.js", VSC nos muestra los cambios que ha tenido el archivo
+	10.3.- git diff server.js                      (tambien noes muestra las difirencias del archivo pero en consola)
+	10.4.- git add .
+	10.5.- git commit -m "segundo cambio"
+	

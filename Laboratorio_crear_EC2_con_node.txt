@@ -1,0 +1,27 @@
+INSTALAR Y EJECUTAR NODE EN LOCAL (VAIO)
+****************************************
+1.- Ir al sitio:  https://nodejs.org/es/download/
+2.- Descargar version LTS y ejecutar (msi)
+3.- node --version      (para verificar la instalacion)
+4.- npm -v              (para verificar ña instalacion de npm)
+
+
+
+
+SERVIDOR EC2 DE AWS
+*******************
+FUENTE: https://www.youtube.com/watch?v=VLItX1PpAx8&t=10s
+
+1.- sudo apt update                                 (Actualizar la lista de redepositorios que tenga instalado)
+2.- sudo apt upgrade                                (Ejecutar actualizacion de redepositorios)
+3.- sudo apt update && sudo apt upgrade             (Ejecutar los 2 comandos anteriores de una vez)
+4.- git --version                                   (comprobar si tenemos git instalado)
+
+NOTA: Un flujo normal en un ambiente de produccion real es crear codigo en ambiente local y luego subirlo a Git para posteriormente subirlo a AWS desde Git
+      y eso es lo que vamos a hacer
+
+5.- Abrimos nuestra cuenta de Git
+6.- y subimos nuestro proyecto local, para eso creamos un nuevo redepositorio y lo colocamos como publico
+7.- git init                                         (para iniciar git)
+	7.1.- git status                             (se veran todos los archivos en rojo porque aun no se ha hecho un git add .)  
+     	7.2.- git add .                              (para subir a staging los archivos)

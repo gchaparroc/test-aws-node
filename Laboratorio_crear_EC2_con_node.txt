@@ -78,4 +78,15 @@ NOTA: Un flujo normal en un ambiente de produccion real es crear codigo en ambie
 	10.3.- git diff server.js                      (tambien noes muestra las difirencias del archivo pero en consola)
 	10.4.- git add .
 	10.5.- git commit -m "segundo cambio"
+	10.6.- git push                                (para subirlo al redepositorio)
+	10.7.- si vemos en github ya deberiamos ver los dos commits y los cambios en el archivo "server.js"
+	10.8.- git remote -v                           (para ver a donde vamos a subir el codigo)
+	10.9.- git pull                                (subir los cambios desde el servidor, este comando se ejecuta desde la consola del servidor)
+	10.10.- cat server.js                          (despues del pull ya en el servidor se ven reflejados los cambios)
+	10.11.- npm start                              (vemos los cambios en el navegador)
+11.- Ahora vamos a hacer que nuestra aplicacion se visualice solamente desde el dominio principal, sin necesidad de darle un puerto en la URL, para eso vamos a
+     crear una regla que le diga al servidor que las aplicaciones que se ejecuten en el puerto 3000, se redireccionen al puerto 80 que es el puerto por defecto
+	11.1.- sudo iptables -A PREROUTING -t nat -i eth0 -p tcp --dport 80 -j REDIRECT --to-port 3000
+	11.2.- ya con esto deberiamos ver la aplicacion desde el dominio "http://ec2-54-83-71-85.compute-1.amazonaws.com/" sin necesidad del puerto
+	11.3.- OJO: Normalmente las redirecciones como estas se harian a traves de un servidor proxy como Nginx pero en este caso lo hicimos con un iptables
 	
